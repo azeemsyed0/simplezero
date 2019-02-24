@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "forever start -a -o serve.log -e err.log --uid 'serveDev' node_modules/@angular/cli/bin/ng s",
-    "end": "forever stop serveDev"
+    "end": "forever stop serveDev",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
