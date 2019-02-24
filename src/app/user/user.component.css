@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;  
   position: absolute;
-  top: 65px;
+  top: 50px;
   bottom: 0px;
   left: 0;
   right: 0;
@@ -53,16 +53,22 @@ h1.app-name {
 }
 
 a {
-  color:white;
+  color: #25292C;
   text-decoration: none;
 }
 
 a:active {
-  color:skyblue;
+  color:white;
+  background-color: red;
   text-decoration: none;
 }
 
 a:hover {
-  color:skyblue;
+  color:white;
+  background-color: red;
   text-decoration: none;
+}
+
+.list-button {
+  width: 150px;
 }
