@@ -9,7 +9,8 @@ import { LoginService } from '../login/login.service';
 })
 export class UserComponent implements OnInit {
   numbers = [];
-
+  showFiller = false;
+  
   constructor(
     changeDetectorRef: ChangeDetectorRef, 
     media: MediaMatcher,
