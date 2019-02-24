@@ -1,0 +1,36 @@
+.wrapper {
+  text-align: center;
+  margin: 10px auto;
+}
+
+.card {
+  max-width: 400px;
+}
+
+.container {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+}
+
+.form-field {
+  width: 200px;
+}
+
+mat-form-field {
+  padding-bottom: 20px;
+}
+
+button {
+  margin-top: 20px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}

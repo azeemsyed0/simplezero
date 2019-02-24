@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" class="toolbar-header">  
+  <button mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+  <h1 class="app-name">SimpleZero</h1>
+  <a [routerLink]="['/login']" class="float-right"><span class="glyphicon glyphicon-log-in"></span> logout</a>
+</mat-toolbar>
+
+<mat-drawer-container class="app-container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <p>Auto-resizing sidenav</p>
+    <span *ngFor="let i of numbers">
+      <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    </span>
+    <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button>
+  </mat-drawer>
+  <div class="sidenav-content">
+    <mat-card class="card wrapper">
+      <mat-card-title>
+        Welcome, {{loginService.loggedinUser}}
+      </mat-card-title>
+    </mat-card>
+  </div>
+</mat-drawer-container>
