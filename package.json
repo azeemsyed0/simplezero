@@ -1,4 +1,3 @@
-
 {
   "name": "angular-app",
   "version": "0.0.0",
@@ -6,30 +5,39 @@
     "ng": "ng",
     "start": "forever start -a -o serve.log -e err.log --uid 'serveDev' node_modules/@angular/cli/bin/ng s",
     "end": "forever stop serveDev",
+    "postinstall": "ng build --aot -prod",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "engines": {
+    "node": "8.10.0",
+    "npm": "6.4.1"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.1.10",
     "@angular/cdk": "^7.1.0",
+    "@angular/cli": "^6.2.9",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
+    "@angular/compiler-cli": "^6.1.0",
     "@angular/core": "^6.1.0",
     "@angular/forms": "^6.1.0",
     "@angular/http": "^6.1.0",
-    "@angular/cli": "^6.2.9",
     "@angular/material": "^7.1.0",
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "angular-cli-ghpages": "^0.5.3",
     "core-js": "^2.5.4",
+    "express": "^4.16.4",
     "forever": "^0.15.3",
     "hammerjs": "^2.0.8",
+    "path": "^0.12.7",
     "rxjs": "~6.2.0",
+    "typescript": "~2.9.2",
     "web-animations-js": "^2.3.1",
     "zone.js": "~0.8.26"
   },
@@ -42,6 +50,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.3.0",
+    "enhanced-resolve": "^3.3.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.0.0",
