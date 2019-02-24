@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "forever start -a -o serve.log -e err.log --uid 'serveDev' ../node_modules/@angular/cli/bin/ng s -dev",
-    "stop": "forever stop serveDev",
+    "start": "ng s",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
