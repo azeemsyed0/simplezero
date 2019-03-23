@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ApiList } from '../../shared/api_list';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -8,7 +8,7 @@ const httpOptions = {
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
-  usersUrl = ApiList.usersUrl;
+  usersUrl = environment.api;
   userSignup: boolean = false;
   registeredUser: any;
   loggedinUser: any;
