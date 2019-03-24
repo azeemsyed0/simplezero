@@ -6,17 +6,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'src/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from 'src/shared/material.module';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,    
+    FooterComponent
   ],
   imports: [
     appRouting,
-    BrowserModule,
+    SharedModule,    
+    MaterialModule,
+    BrowserModule,    
     HttpClientModule,
     BrowserAnimationsModule
-  ],
+  ],  
   providers: [
     SharedModule,
     MaterialModule

@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   }
 
   addUser(data) {
-    this.loginService.addEmployee({name:data.name, email:data.email, password:data.password})
+    this.loginService.addUser({name:data.name, email:data.email, password:data.password})
       .subscribe( data => {
         console.log('successfully added', data);
       });        

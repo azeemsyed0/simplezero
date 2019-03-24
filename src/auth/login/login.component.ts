@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   signinForm: FormGroup;
   submitted: boolean = false;  
   invalidCredentials: boolean = false;
-
+  
   constructor(
     public router: Router,
     public loginService: LoginService,
@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loginService.isLoginPage = true;
     this.signinForm = this.fb.group({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
@@ -43,8 +44,9 @@ export class LoginComponent implements OnInit {
       const user = await this.loginService.getUserByEmail(data.email);
 
       if(user[0].email === data.email && user[0].password === data.password){
-        this.loginService.loggedinUser = user[0].name;
-        this.router.navigate(['me']);
+        sessionStorage.setItem('userName', user[0].name);
+        sessionStorage.setItem('loggedIn', 'true');
+        this.router.navigate(['dashboard']);
       }
       else this.invalidCredentials = true;
     }
@@ -54,5 +56,6 @@ export class LoginComponent implements OnInit {
     this.loginService.userSignup = false;
     this.loginService.registeredUser = null;
     this.invalidCredentials = false;
+    this.loginService.isLoginPage = false;
   }
 }

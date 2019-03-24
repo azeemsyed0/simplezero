@@ -1,8 +1,37 @@
-.wrapper {
-    text-align: center;
+.custom-container {
+  min-height: 81vh;
+  height: auto;
 }
-
-.button {
-    position: absolute;
-    top: 50%;
+.app-container {
+  display: flex;
+  flex-direction: column;  
+  /* position: absolute;   */
+}
+.sidenav {
+  padding: 20px;
+}
+.logout {
+  position: absolute;
+  right:10px;  
+}
+a.appname {
+  margin-left: 8px;
+}
+a.logout {
+  color: #25292C;
+  text-decoration: none;
+}
+a.appname {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+a.logout:active {
+  color:white;
+  background-color: red;
+  text-decoration: none;
+}
+a.logout:hover {
+  color:white;
+  background-color: red;
+  text-decoration: none;
 }

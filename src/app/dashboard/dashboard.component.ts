@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../auth/login/login.service';
 import { FormControl } from '@angular/forms';
 
 export interface Tile {
@@ -10,14 +10,11 @@ export interface Tile {
 }
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class AppComponent {
-  @ViewChild('sidenav') public sidenav;
-
-  isLoginPage: boolean;
+export class DashboardComponent implements OnInit {  
   tiles: Tile[] = [
     {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
     {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
@@ -27,18 +24,17 @@ export class AppComponent {
 
   mode = new FormControl('push');
   constructor(
-    private router: Router
-  ) {}
+    public loginService: LoginService
+  ) {  }
+  array: any;
 
-  checkbutton() {
-    this.sidenav.close()
+  ngOnInit() { }
+
+  checkbutton() {    
     console.log("bunnies")
   }
   
-  checkRoute() {
-    if(this.router.url === '/login' || this.router.url === '/home')
-      return true
-    else
-      return false
+  ngOnDestroy(): void {
+    
   }
 }

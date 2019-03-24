@@ -1,1 +1,74 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary" *ngIf="!checkRoute()">    
+  <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+  <a [routerLink]="['dashboard']" class="appname"><h1>Zero</h1></a>
+  <a (click)="loginService.signout()" [routerLink]="['login']" class="logout" mat-raised-button>Logout</a>
+</mat-toolbar>
+
+
+<mat-sidenav-container class="app-container">
+  <mat-sidenav #sidenav class="sidebar" [mode]="mode.value">
+    <mat-list id="overflow">
+      <h3 matSubheader>Organizers</h3>
+      
+      <mat-list-item>
+        <button style="width:150px" routerLink='/todos' (click)="checkbutton()" mat-raised-button>
+          My To-Dos
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button style="width:150px" routerLink='/notes' (click)="checkbutton()" mat-raised-button>
+          My Notes
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button style="width:150px" routerLink='/time' (click)="checkbutton()" mat-raised-button>
+          My Time
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button style="width:150px" routerLink='/journal' (click)="checkbutton()" mat-raised-button>
+          My Journal
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button style="width:150px" routerLink='/people' (click)="checkbutton()" mat-raised-button>
+          My People
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button style="width:150px" routerLink='/dates' (click)="checkbutton()" mat-raised-button>
+          My Dates
+        </button>
+      </mat-list-item>
+    </mat-list>
+    <mat-divider></mat-divider>
+    <mat-list>
+      <h3 matSubheader>Files</h3>
+      <mat-list-item>
+        <mat-icon matListIcon>folder</mat-icon>
+        <h6 matLine>My Documents</h6>
+        <p matLine>Size: 15gb </p>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListIcon>folder</mat-icon>
+        <h6 matLine>My Photos</h6>
+        <p matLine>Size: 20gb</p>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListIcon>folder</mat-icon>
+        <h6 matLine>My Videos</h6>
+        <p matLine>Size: 50gb </p>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListIcon>person</mat-icon>
+        <h6 matLine>My Projects</h6>
+        <p matLine>Size: 50gb </p>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="custom-container">      
+    <router-outlet> </router-outlet>        
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<app-footer *ngIf = "!checkRoute()"></app-footer>

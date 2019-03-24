@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
-import { UserRoutingModule } from './user-routing.module';
-import { UserComponent } from './user.component';
 import { SharedModule } from 'src/shared/shared.module';
 import { MaterialModule } from 'src/shared/material.module';
+import { NotesRoutingModule } from './notes-routing.module';
+import { NotesComponent } from './notes.component';
 
 @NgModule({
   imports: [
-    UserRoutingModule,
+    NotesRoutingModule,
     SharedModule,
     MaterialModule
   ],
   declarations: [
-    UserComponent
+    NotesComponent
   ],
   entryComponents: [
-    UserComponent
+    NotesComponent
   ]
 })
-export class UserModule { }
+export class NotesModule { }
