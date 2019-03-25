@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
       const user = await this.loginService.getUserByEmail(data.email);
 
       if(user[0].email === data.email && user[0].password === data.password){
+        console.log("Helloworld")
         sessionStorage.setItem('userName', user[0].name);
         sessionStorage.setItem('loggedIn', 'true');
         this.router.navigate(['dashboard']);
