@@ -1,0 +1,31 @@
+.todo-container {  
+  margin: 10px auto;
+}
+
+.add-todo {
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  flex-basis: 33%;
+}
+
+.in-progress {
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  flex-basis: 33%;
+}
+
+.done-todos {
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  flex-basis: 33%;
+}
+
+@media (min-width: 800px) {
+  .todo-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
