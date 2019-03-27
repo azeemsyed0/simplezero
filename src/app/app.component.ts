@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import { LoginService } from 'src/auth/login/login.service';
 
 export interface Tile {
   color: string;
@@ -27,7 +28,8 @@ export class AppComponent {
 
   mode = new FormControl('push');
   constructor(
-    private router: Router
+    private router: Router,
+    private loginService: LoginService
   ) {}
 
   checkbutton() {

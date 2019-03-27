@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" *ngIf="!checkRoute()">    
   <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
-  <a [routerLink]="['dashboard']" class="appname"><h1>Zero</h1></a>
+  <a [routerLink]="['dashboard']" class="appname"><h1>{{loginService.userName}}'s Zero</h1></a>
   <a (click)="loginService.signout()" [routerLink]="['login']" class="logout" mat-raised-button>Logout</a>
 </mat-toolbar>
 
