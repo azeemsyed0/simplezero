@@ -1,11 +1,10 @@
 .custom-container {
   min-height: 81vh;
-  height: auto;
+  height: auto;  
 }
 .app-container {
   display: flex;
   flex-direction: column;  
-  /* position: absolute;   */
 }
 .sidenav {
   padding: 20px;
@@ -34,4 +33,10 @@ a.logout:hover {
   color:white;
   background-color: red;
   text-decoration: none;
+}
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
