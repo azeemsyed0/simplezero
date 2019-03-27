@@ -1,12 +1,48 @@
-<div>
-  <mat-grid-list cols="4" rowHeight="270px">
-    <mat-grid-tile
-      *ngFor="let tile of tiles"
-      [colspan]="tile.cols"
-      [rowspan]="tile.rows"
-      [style.background]="tile.color">
-        Welcome, {{loginService.userName}}
-        {{tile.text}}
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>    
+<div class="grid-list">
+  <div class="row-1">
+    <div
+      [style.background]="'steelblue'"
+      (click) = "redirectTodo()"
+      class="grid-list-item"
+    >
+      Todo Dashboard
+    </div>
+    <div
+      [style.background]="'cadetblue'"
+      (click) = "redirectNotes()"      
+      class="grid-list-item"
+    >
+      Notes Dashboard
+    </div>
+    <div
+      [style.background]="'skyblue'"
+      (click) = "redirectJournal()"      
+      class="grid-list-item"
+    >
+      Journal Dashboard
+    </div>
+  </div>  
+  <div class="row-2">
+    <div
+      [style.background]="'lightblue'"
+      (click) = "redirectTime()"      
+      class="grid-list-item"
+    >
+      Time Dashboard
+    </div>
+    <div
+      [style.background]="'lightgreen'"
+      (click) = "redirectDates()"      
+      class="grid-list-item"
+    >
+      Dates Dashboard
+    </div>
+    <div
+      [style.background]="'lightpink'"
+      (click) = "redirectPeople()"      
+      class="grid-list-item"
+    >
+      People Dashboard
+    </div>
+  </div>  
+</div>

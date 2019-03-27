@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../auth/login/login.service';
-import { FormControl } from '@angular/forms';
-
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
-}
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dashboard',
@@ -15,25 +8,37 @@ export interface Tile {
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {  
-  tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
-
-  mode = new FormControl('push');
   constructor(
-    public loginService: LoginService
+    public loginService: LoginService,
+    public router: Router
   ) {  }
-  array: any;
 
   ngOnInit() { }
 
-  checkbutton() {    
-    console.log("bunnies")
+  redirectTodo() {
+    this.router.navigate(['todos']);
   }
-  
+
+  redirectNotes() {
+    this.router.navigate(['notes']);
+  }
+
+  redirectJournal() {
+    this.router.navigate(['journal']);
+  }
+
+  redirectDates() {
+    this.router.navigate(['dates']);
+  }
+
+  redirectTime() {
+    this.router.navigate(['time']);
+  }
+
+  redirectPeople() {
+    this.router.navigate(['people']);
+  }
+
   ngOnDestroy(): void {
     
   }
