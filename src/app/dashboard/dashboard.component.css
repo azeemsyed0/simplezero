@@ -18,3 +18,7 @@
   min-height: 36.5vh;  
   margin: 2vh 10px;  
 }
+
+.example-header-image {  
+  background-size: cover;
+}
