@@ -1,14 +1,96 @@
+import { NestedTreeControl } from '@angular/cdk/tree';
 import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
+import { Router } from '@angular/router';
+import { takeWhile } from 'rxjs/operators';
+import { AuthService } from 'src/auth/auth.service';
 import { LoginService } from 'src/auth/login/login.service';
 
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
+/**
+ * Food data with nested structure.
+ * Each node has a name and an optiona list of children.
+ */
+let Robo = 'Robo'
+
+interface SuperPowers {
+  name: string;
+  ico?: string;
+  goto?: string;
+  children?: SuperPowers[];
 }
+
+const TREE_DATA: SuperPowers[] = [
+  {
+    name: 'Missions',
+    ico: 'to-do',
+    goto: 'todos',
+    children: [
+      {name: 'Planned missions'},
+      {name: 'Missions in progress'},
+      {name: 'Accomplished missions'},
+    ]
+  }, {
+    name: 'Publications',
+    ico: 'diary',
+    goto: 'notes',
+    children: [
+      {
+        name: 'Auto Biography',
+        children: [
+          {name: `${Robo} Assited`},
+          {name: 'Penned'},
+        ]
+      }, {
+        name: 'Random Ideas',
+        children: [
+          {name: `${Robo} Assisted`},
+          {name: 'Penned'},
+        ]
+      },
+    ]
+  }, {
+    name: 'Time travel',
+    ico: 'hourglass',
+    goto: 'time',
+    children: [
+      {name: `${Robo} Assisted`},
+      {name: 'Penned'},
+      {name: 'Statistics'},
+    ]
+  }, {
+    name: 'Resource Manager ',
+    ico: 'piggy-bank',
+    goto: 'spends',
+    children: [
+      {name: `${Robo} Assisted`},
+      {name: 'Penned'},
+      {name: 'Statistics'},
+    ]
+  }, {
+    name: 'Important Days',
+    ico: 'calendar',
+    goto: 'dates',
+    children: [
+      {name: `${Robo} Assisted`},
+      {name: 'Penned'},
+      {name: 'Statistics'},
+    ]
+  }, {
+    name: 'Sidekicks',
+    ico: 'elderly',
+    goto: 'people',
+    children: [
+      {name: 'Family'},
+      {name: 'Friends'},
+      {name: 'Someone Special'},
+    ]
+  }
+];
+
+/**
+ * @title Tree with nested nodes
+ */
 
 @Component({
   selector: 'app-root',
@@ -16,31 +98,37 @@ export interface Tile {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  adminLoggedIn: boolean = false;
+  mode = new FormControl('over');
+  aliveSubscription: boolean = true;
+  
+  treeControl = new NestedTreeControl<SuperPowers>(node => node.children);
+  dataSource = new MatTreeNestedDataSource<SuperPowers>();
+
   @ViewChild('sidenav') public sidenav;
-
-  isLoginPage: boolean;
-  tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
-
-  mode = new FormControl('push');
+  
   constructor(
     private router: Router,
-    private loginService: LoginService
-  ) {}
+    private authService: AuthService,
+    private loginService: LoginService,    
+  ) {
+    this.dataSource.data = TREE_DATA;
+  }
+
+  hasChild = (_: number, node: SuperPowers) => !!node.children && node.children.length > 0;
+  
+  ngOnInit() {
+    this.adminLoggedIn  = this.authService.isLoggedIn();
+    this.authService.loggedIn.pipe(takeWhile(() => this.aliveSubscription)).subscribe(() => this.adminLoggedIn = true);
+    this.authService.loggedOut.pipe(takeWhile(() => this.aliveSubscription)).subscribe(() => this.adminLoggedIn = false);
+  }
 
   checkbutton() {
     this.sidenav.close()
     console.log("bunnies")
   }
   
-  checkRoute() {
-    if(this.router.url === '/login' || this.router.url === '/home')
-      return true
-    else
-      return false
+  ngOnDestroy() {
+    this.aliveSubscription = false;    
   }
 }

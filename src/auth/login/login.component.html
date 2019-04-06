@@ -24,7 +24,7 @@
           </button>
         </mat-form-field><br>
         <mat-form-field class="form-field">
-          <input matInput type="text" placeholder="Password" formControlName="password">
+          <input matInput type="password" placeholder="Password" formControlName="password">
           <mat-error *ngIf="password.invalid && submitted || (password.invalid && !submitted && ( password.dirty || password.touched ))">
             Password is <strong>required</strong>
           </mat-error>

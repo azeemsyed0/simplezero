@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../auth/login/login.service';
 
 @Component({
-  selector: 'journal',
-  templateUrl: './journal.component.html',
-  styleUrls: ['./journal.component.css']
+  selector: 'spends',
+  templateUrl: './spends.component.html',
+  styleUrls: ['./spends.component.css']
 })
-export class JournalComponent implements OnInit {  
+export class SpendsComponent implements OnInit {  
 
   constructor(
     public loginService: LoginService

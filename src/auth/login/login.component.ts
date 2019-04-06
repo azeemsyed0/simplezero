@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../login/login.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,19 +10,24 @@ import { LoginService } from '../login/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  title = 'SimpleZero';
+  title = 'Simplapps, Zero';
   signinForm: FormGroup;
-  submitted: boolean = false;  
+  submitted: boolean = false;
   invalidCredentials: boolean = false;
+  private aliveSubscription:boolean = true;
   
   constructor(
     public router: Router,
+    private authService: AuthService,
     public loginService: LoginService,
     public fb: FormBuilder
-  ) { }
+  ) {
+    if(this.authService.isLoggedIn()) {
+      router.navigate(['dashboard']);
+    }
+  }
 
-  ngOnInit() {
-    this.loginService.isLoginPage = true;
+  ngOnInit() {    
     this.signinForm = this.fb.group({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
@@ -38,25 +44,22 @@ export class LoginComponent implements OnInit {
 
   async signin() {
     this.submitted = true;
-
+    this.invalidCredentials = false;
     if(this.signinForm.valid) {
       const data = this.signinForm.value;
-      const user = await this.loginService.getUserByEmail(data.email);
+      const response = await this.authService.login(data);
 
-      if(user[0].email === data.email && user[0].password === data.password){
-        console.log("Helloworld")
-        sessionStorage.setItem('userName', user[0].name);
-        sessionStorage.setItem('loggedIn', 'true');
+      if(response['status'] === 'valid'){
+        console.log('Successful login');
+        this.submitted = false;        
+        this.loginService.userName = response['username'];
         this.router.navigate(['dashboard']);
       }
       else this.invalidCredentials = true;
     }
   }
 
-  ngOnDestroy() {
-    this.loginService.userSignup = false;
-    this.loginService.registeredUser = null;
-    this.invalidCredentials = false;
-    this.loginService.isLoginPage = false;
+  ngOnDestroy() {    
+    this.aliveSubscription = false;
   }
 }

@@ -23,8 +23,8 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['notes']);
   }
 
-  redirectJournal() {
-    this.router.navigate(['journal']);
+  redirectSpends() {
+    this.router.navigate(['spends']);
   }
 
   redirectDates() {

@@ -5,7 +5,7 @@ const appRoutes: Routes = [
   {path:'login', loadChildren: '../auth/login/login.module#LoginModule'},
   {path:'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule'},
   {path:'todos', loadChildren: './todos/todo.module#TodoModule'},
-  {path:'journal', loadChildren: './journal/journal.module#JournalModule'},
+  {path:'spends', loadChildren: './spends/spends.module#SpendsModule'},
   {path:'notes', loadChildren: './notes/notes.module#NotesModule'},
   {path:'people', loadChildren: './people/people.module#PeopleModule'},
   {path:'time', loadChildren: './time/time.module#TimeModule'},

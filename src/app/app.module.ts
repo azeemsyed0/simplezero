@@ -7,6 +7,8 @@ import { SharedModule } from 'src/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from 'src/shared/material.module';
 import { FooterComponent } from './footer/footer.component';
+import { AuthService } from 'src/auth/auth.service';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { FooterComponent } from './footer/footer.component';
   ],  
   providers: [
     SharedModule,
+    AuthService,
+    AuthGuard,
     MaterialModule
   ],
   bootstrap: [AppComponent]
