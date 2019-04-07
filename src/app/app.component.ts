@@ -81,7 +81,9 @@ const TREE_DATA: SuperPowers[] = [
 export class AppComponent {  
   adminLoggedIn: boolean = false;
   mode = new FormControl('side');
+  theme = new FormControl('primary');
   aliveSubscription: boolean = true;
+  themeTest = new FormControl('');
   
   treeControl = new NestedTreeControl<SuperPowers>(node => node.children);
   dataSource = new MatTreeNestedDataSource<SuperPowers>();
@@ -103,12 +105,20 @@ export class AppComponent {
     this.authService.loggedOut.pipe(takeWhile(() => this.aliveSubscription)).subscribe(() => this.adminLoggedIn = false);    
   }
 
-  ngOnDestroy() {
-    this.aliveSubscription = false;    
-  }
-
   setSidebar(value) {
     this.mode.setValue(value);
     this.sidenav.open()
+  }
+
+  setTheme(value) {
+    this.theme.setValue(value);
+  }
+
+  setThemeTest(value) {
+    this.themeTest.setValue(value);
+  }
+
+  ngOnDestroy() {
+    this.aliveSubscription = false;    
   }
 }

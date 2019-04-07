@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="header" *ngIf="adminLoggedIn">
+<mat-toolbar [color]="theme.value" class="header" *ngIf="adminLoggedIn">
   <div class="left-section">
     <div>      
       <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
@@ -77,10 +77,17 @@
 </mat-sidenav-container>
 
 <mat-menu #menu="matMenu">
+  <button mat-menu-item>Profile</button>
   <button mat-menu-item [matMenuTriggerFor]="sidebar">Sidebar</button>
   <button mat-menu-item [matMenuTriggerFor]="header">Header</button>
+  <button 
+    mat-menu-item
+    (click)="sidenav.toggle(); authService.logOut()"
+    [routerLink]="['login']"
+  >
+    Logout
+  </button>
 </mat-menu>
-
 <mat-menu #sidebar="matMenu">  
   <button mat-menu-item (click)="setSidebar('side')">Side</button>
   <button mat-menu-item (click)="setSidebar('over')">Over</button>
@@ -88,6 +95,7 @@
 </mat-menu>
 
 <mat-menu #header="matMenu">  
-  <button mat-menu-item>Primary color</button>  
-  <button mat-menu-item>Secondary color</button>
+  <button mat-menu-item (click)="setTheme('primary')">Primary</button>  
+  <button mat-menu-item (click)="setTheme('accent')">Accent</button>
+  <button mat-menu-item (click)="setTheme('warn')">Warn</button>
 </mat-menu>

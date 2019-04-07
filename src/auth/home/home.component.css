@@ -1,3 +1,17 @@
+@media(max-width: 759px) {
+  .wrapper {
+    min-height: 60vh;
+    text-align: center;
+    margin: auto;  
+  }
+  .container {
+    height: 100vh;
+    display: flex;
+    align-items: center;  
+    background-size: 100%;  
+  }
+}
+
 @media(min-width: 760px) {
   .wrapper {
     min-height: 100vh;
@@ -19,17 +33,6 @@
     background-size: 100%;
     padding: 0;
   }
-}
-.wrapper {
-  min-height: 100vh;
-  text-align: center;
-  margin: auto;  
-}
-.container {
-  height: 100vh;
-  display: flex;
-  align-items: center;  
-  background-size: 100%;  
 }
 .button {
   position: absolute;
