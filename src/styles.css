@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
  html {
   height: 100%;
@@ -23,11 +23,17 @@ body {
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {  
-  background: rgba(103, 58, 183, 0.6);
+  background: rgb(63,81,181,0.6);
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {    
-  background: rgba(103, 58, 183, 1.0);
+  background: rgb(63,81,181, 1.0);
   border-radius: 50px;
 }
-
+.account-menu {
+  width: 150px;
+  margin-left: 20px;  
+}
+button:focus {
+  outline: 0;
+}

@@ -10,11 +10,11 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  title = 'Simplapps, Zero';
+  title = 'Simplapps';
   signinForm: FormGroup;
   submitted: boolean = false;
   invalidCredentials: boolean = false;
-  private aliveSubscription:boolean = true;
+  aliveSubscription:boolean = true;
   
   constructor(
     public router: Router,

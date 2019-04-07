@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { environment } from "../environments/environment";
@@ -56,6 +56,7 @@ export class AuthService {
   logOut() {
     localStorage.setItem('logIn', JSON.stringify(false));
     localStorage.removeItem('userId');
+    localStorage.removeItem('userName');
     this.setLoggedIn();
     this.loggedOut.emit();
     this.router.navigate(['login']);    

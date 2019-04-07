@@ -99,7 +99,7 @@ const TREE_DATA: SuperPowers[] = [
 })
 export class AppComponent {
   adminLoggedIn: boolean = false;
-  mode = new FormControl('over');
+  mode = new FormControl('side');
   aliveSubscription: boolean = true;
   
   treeControl = new NestedTreeControl<SuperPowers>(node => node.children);
@@ -110,7 +110,7 @@ export class AppComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private loginService: LoginService,    
+    private loginService: LoginService
   ) {
     this.dataSource.data = TREE_DATA;
   }
@@ -125,7 +125,6 @@ export class AppComponent {
 
   checkbutton() {
     this.sidenav.close()
-    console.log("bunnies")
   }
   
   ngOnDestroy() {

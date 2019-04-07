@@ -9,7 +9,7 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class LoginService {
   sessionValid: boolean = JSON.parse(sessionStorage.getItem('loggedIn')) || false;
-  userName: string = sessionStorage.getItem('userName') || 'Stranger';
+  userName: string = localStorage.getItem('userName') || 'Stranger';
   userSignup: boolean = false;
   apiUrl = environment.api;  
   registeredUser: any;

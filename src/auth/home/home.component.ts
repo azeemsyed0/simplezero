@@ -9,7 +9,7 @@ import { LoginService } from '../login/login.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  title = 'SimpleZero';
+  title = 'Simplapps';
   signupForm: FormGroup;
   submitted: boolean = false;
 
