@@ -15,8 +15,8 @@
 }
 .grid-list-item {
   flex: 1;
-  min-height: 36.5vh;  
-  margin: 2vh 10px;  
+  min-height: calc(50vh - 64px);  
+  margin: 2vh 15px;
 }
 
 .example-header-image {  

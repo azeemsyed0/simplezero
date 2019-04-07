@@ -1,6 +1,15 @@
+.header {
+  position: sticky;
+  z-index: 200;
+  top: 0;
+}
 .login-container {
   min-height: 100vh;
   background-color: slategray;
+}
+.sidebar {
+  position: fixed;
+  top: 64px;
 }
 .custom-container {
   min-height: calc(100vh - 64px);
@@ -45,12 +54,13 @@ a.logout:hover {
 }
 .sidebar-button {  
   color: #0082FF;
-  border-radius: 0px;
   border-top: 1px solid #D4D6DE;
-  background-color: white;
-  position: absolute;
-  bottom: 2px;
+  overflow-y: hidden;  
+  border-radius: 0px;  
+  background-color: white;  
   width: 100%;
+  position: absolute;  
+  bottom: 0px;
 }
 .node-name {
   float: left;
@@ -59,7 +69,8 @@ a.logout:hover {
   margin-left: 10px;
 }
 .node-icon {  
-  float: left;  
+  float: left;
+  margin-top: -4px;
 }
 .footer {
   position: absolute;
@@ -86,5 +97,6 @@ mat-icon.account-icon {
   line-height: 18px;
 }
 .account-name {
-  padding: 0 10px;
+  padding-left: 10px;
+  padding-right: 40px;  
 }

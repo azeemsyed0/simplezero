@@ -7,12 +7,6 @@ import { takeWhile } from 'rxjs/operators';
 import { AuthService } from 'src/auth/auth.service';
 import { LoginService } from 'src/auth/login/login.service';
 
-/**
- * Food data with nested structure.
- * Each node has a name and an optiona list of children.
- */
-let Robo = 'Robo'
-
 interface SuperPowers {
   name: string;
   ico?: string;
@@ -22,75 +16,60 @@ interface SuperPowers {
 
 const TREE_DATA: SuperPowers[] = [
   {
-    name: 'Missions',
-    ico: 'to-do',
+    name: 'To Dos',
+    ico: 'list',
     goto: 'todos',
     children: [
-      {name: 'Planned missions'},
-      {name: 'Missions in progress'},
-      {name: 'Accomplished missions'},
+      {name: 'Planned To Dos'},
+      {name: 'To Dos in progress'},
+      {name: 'Completed To Dos'}
     ]
   }, {
-    name: 'Publications',
-    ico: 'diary',
+    name: 'Notes',
+    ico: 'event_note',
     goto: 'notes',
     children: [
-      {
-        name: 'Auto Biography',
-        children: [
-          {name: `${Robo} Assited`},
-          {name: 'Penned'},
-        ]
-      }, {
-        name: 'Random Ideas',
-        children: [
-          {name: `${Robo} Assisted`},
-          {name: 'Penned'},
-        ]
-      },
+      { name: 'Dairy'}, 
+      { name: 'Ideas'}
     ]
   }, {
-    name: 'Time travel',
-    ico: 'hourglass',
+    name: 'Time',
+    ico: 'access_time',
     goto: 'time',
     children: [
-      {name: `${Robo} Assisted`},
+      {name: `Assisted`},
       {name: 'Penned'},
-      {name: 'Statistics'},
+      {name: 'Statistics'}
     ]
   }, {
-    name: 'Resource Manager ',
-    ico: 'piggy-bank',
+    name: 'Spends',
+    ico: 'attach_money',
     goto: 'spends',
     children: [
-      {name: `${Robo} Assisted`},
+      {name: `Assisted`},
       {name: 'Penned'},
-      {name: 'Statistics'},
+      {name: 'Statistics'}
     ]
   }, {
-    name: 'Important Days',
-    ico: 'calendar',
+    name: 'Days',
+    ico: 'today',
     goto: 'dates',
     children: [
-      {name: `${Robo} Assisted`},
+      {name: `Assisted`},
       {name: 'Penned'},
-      {name: 'Statistics'},
+      {name: 'Statistics'}
     ]
   }, {
-    name: 'Sidekicks',
-    ico: 'elderly',
+    name: 'People',
+    ico: 'people',
     goto: 'people',
     children: [
       {name: 'Family'},
       {name: 'Friends'},
-      {name: 'Someone Special'},
+      {name: 'Special'}
     ]
   }
 ];
-
-/**
- * @title Tree with nested nodes
- */
 
 @Component({
   selector: 'app-root',
@@ -117,16 +96,12 @@ export class AppComponent {
 
   hasChild = (_: number, node: SuperPowers) => !!node.children && node.children.length > 0;
   
-  ngOnInit() {
+  ngOnInit() {    
     this.adminLoggedIn  = this.authService.isLoggedIn();
     this.authService.loggedIn.pipe(takeWhile(() => this.aliveSubscription)).subscribe(() => this.adminLoggedIn = true);
-    this.authService.loggedOut.pipe(takeWhile(() => this.aliveSubscription)).subscribe(() => this.adminLoggedIn = false);
+    this.authService.loggedOut.pipe(takeWhile(() => this.aliveSubscription)).subscribe(() => this.adminLoggedIn = false);    
   }
 
-  checkbutton() {
-    this.sidenav.close()
-  }
-  
   ngOnDestroy() {
     this.aliveSubscription = false;    
   }

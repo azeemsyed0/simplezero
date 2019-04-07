@@ -1,0 +1,52 @@
+@media (min-width: 800px) {
+  .notes-container {
+    display: flex;
+    justify-content: space-between;    
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.notes-container {  
+  margin: 10px auto;
+}
+
+.add-new {  
+  box-sizing: border-box;
+  flex-basis: 33%;
+}
+
+.journal {  
+  box-sizing: border-box;
+  flex-basis: 33%;  
+}
+
+.novel {  
+  box-sizing: border-box;
+  flex-basis: 33%;
+}
+
+.recepies {  
+  box-sizing: border-box;
+  flex-basis: 33%;
+}
+
+.school {  
+  box-sizing: border-box;
+  flex-basis: 33%;
+}
+
+.work {  
+  box-sizing: border-box;
+  flex-basis: 33%;
+}
+
+.bills {  
+  box-sizing: border-box;
+  flex-basis: 33%;
+}
+
+.grid-list-item {  
+  min-height: calc(50vh - 64px);  
+  margin: 2vh 15px;
+}
