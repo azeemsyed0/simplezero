@@ -2,7 +2,6 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
-import { Router } from '@angular/router';
 import { takeWhile } from 'rxjs/operators';
 import { AuthService } from 'src/auth/auth.service';
 import { LoginService } from 'src/auth/login/login.service';
@@ -87,9 +86,8 @@ export class AppComponent {
   @ViewChild('sidenav') public sidenav;
   
   constructor(
-    private router: Router,
-    private authService: AuthService,
-    private loginService: LoginService
+    public authService: AuthService,
+    public loginService: LoginService
   ) {
     this.dataSource.data = TREE_DATA;
   }

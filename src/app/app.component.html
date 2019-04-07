@@ -48,11 +48,11 @@
         <span class="account-name">{{loginService.userName}}</span>
         <mat-icon>arrow_drop_up</mat-icon>
       </button>
-      <mat-menu [backdropClass]="full-width" #aboveMenu="matMenu" class="account-menu">
+      <mat-menu #aboveMenu="matMenu" class="account-menu">
         <button mat-menu-item>Profile</button>
         <button 
           mat-menu-item
-          (click)="sidenav.toggle(); authService.logOut()" 
+          (click)="sidenav.toggle(); authService.logOut()"
           [routerLink]="['login']"
         >
           Logout
