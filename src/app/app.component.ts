@@ -19,9 +19,12 @@ const TREE_DATA: SuperPowers[] = [
     ico: 'list',
     goto: 'todos',
     children: [
-      {name: 'Planned To Dos'},
-      {name: 'To Dos in progress'},
-      {name: 'Completed To Dos'}
+      {name: 'Places'},
+      {name: 'Experiences'},
+      {name: 'Health'},
+      {name: 'Hygiene'},
+      {name: 'Errands'},
+      {name: 'Shopping'}
     ]
   }, {
     name: 'Notes',
@@ -75,7 +78,7 @@ const TREE_DATA: SuperPowers[] = [
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent {  
   adminLoggedIn: boolean = false;
   mode = new FormControl('side');
   aliveSubscription: boolean = true;
@@ -102,5 +105,10 @@ export class AppComponent {
 
   ngOnDestroy() {
     this.aliveSubscription = false;    
+  }
+
+  setSidebar(value) {
+    this.mode.setValue(value);
+    this.sidenav.open()
   }
 }

@@ -1,6 +1,17 @@
 <mat-toolbar color="primary" class="header" *ngIf="adminLoggedIn">
-  <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
-  <a [routerLink]="['dashboard']" class="appname"><h1>{{loginService.userName}}'s Zero</h1></a>
+  <div class="left-section">
+    <div>      
+      <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+    </div>
+    <div>
+      <a [routerLink]="['dashboard']" class="appname"><h1>{{loginService.userName}}'s Zero</h1></a>
+    </div>
+  </div>  
+  <div class="right-section">
+    <button mat-button [matMenuTriggerFor]="menu" class="header-menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>  
 </mat-toolbar>
 
 <mat-sidenav-container class="app-container">  
@@ -65,3 +76,18 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 
+<mat-menu #menu="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="sidebar">Sidebar</button>
+  <button mat-menu-item [matMenuTriggerFor]="header">Header</button>
+</mat-menu>
+
+<mat-menu #sidebar="matMenu">  
+  <button mat-menu-item (click)="setSidebar('side')">Side</button>
+  <button mat-menu-item (click)="setSidebar('over')">Over</button>
+  <button mat-menu-item (click)="setSidebar('push')">Push</button>
+</mat-menu>
+
+<mat-menu #header="matMenu">  
+  <button mat-menu-item>Primary color</button>  
+  <button mat-menu-item>Secondary color</button>
+</mat-menu>
